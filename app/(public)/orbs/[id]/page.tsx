@@ -1,4 +1,4 @@
-import { createServerClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, BookOpen, Sparkles, Music } from 'lucide-react';
@@ -28,7 +28,7 @@ export default async function OrbPortalPage({ params }: { params: { id: string }
   }
 
   const orbInfo = ORB_DATA[orbId as keyof typeof ORB_DATA];
-  const supabase = await createServerClient();
+  const supabase = createClient();
 
   // Fetch content related to this Orb
   const { data: content } = await supabase
