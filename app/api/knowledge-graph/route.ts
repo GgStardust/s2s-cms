@@ -39,6 +39,7 @@ export async function GET(request: NextRequest) {
         id: `orb-${i}`,
         name: `Orb ${i}`,
         type: 'orb',
+        contentType: 'orb',
         orbs: [i],
         tags: [],
         size: 15,
