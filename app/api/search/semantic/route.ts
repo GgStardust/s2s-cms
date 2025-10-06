@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Group by file and get full file data
-    const fileIds = [...new Set(results.map(r => r.content_file_id))];
+    const fileIds = Array.from(new Set(results.map(r => r.content_file_id)));
 
     const { data: files } = await supabase
       .from('content_files')
