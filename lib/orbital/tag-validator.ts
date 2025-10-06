@@ -219,7 +219,7 @@ function levenshteinDistance(str1: string, str2: string): number {
  * Extract tags from YAML string
  */
 export function extractTagsFromYaml(yaml: string): string[] {
-  const tagMatch = yaml.match(/tags:\s*\[(.*?)\]/s);
+  const tagMatch = yaml.match(/tags:\s*\[([\s\S]*?)\]/);
   if (!tagMatch) return [];
 
   const tagsString = tagMatch[1];

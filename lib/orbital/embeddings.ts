@@ -117,7 +117,7 @@ export async function searchSimilarContent(
   const fileMap = new Map(files?.map((f: any) => [f.id, f]) || []);
 
   return data.map((result: any) => {
-    const file = fileMap.get(result.content_file_id);
+    const file: any = fileMap.get(result.content_file_id);
     return {
       ...result,
       file_title: file?.title,

@@ -194,7 +194,7 @@ export async function suggestBookContentMapping(
       book_title: bookTitle,
       book_type: bookType,
       chapter_mappings: result.chapter_mappings || [],
-      unmapped_content,
+      unmapped_content: unmappedContent,
     };
   } catch (error) {
     console.error('Error in suggestBookContentMapping:', error);
