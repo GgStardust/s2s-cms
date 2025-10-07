@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Montserrat, Lora } from 'next/font/google'
 import './globals.css'
-import DashboardNav from '@/components/navigation/DashboardNav'
+import PublicNav from '@/components/navigation/PublicNav'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -42,8 +42,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${lora.variable}`}>
-      <body className="bg-creamy-white text-deep-navy min-h-screen">
-        <DashboardNav />
+      <body className="bg-deep-navy text-creamy-white min-h-screen">
+        <PublicNav />
         {children}
       </body>
     </html>

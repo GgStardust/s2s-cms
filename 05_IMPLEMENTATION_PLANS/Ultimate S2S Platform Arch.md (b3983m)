@@ -1,0 +1,871 @@
+# **FINAL S2S IMPLEMENTATION PLAN**
+## **Backend-First, Content-Driven, Rules-Integrated**
+
+---
+
+# **EXECUTIVE SUMMARY**
+
+**What we're building:**
+A consciousness technology dashboard where YOU can create content efficiently, and USERS can explore the 13-Orb system through an elegant, living interface.
+
+**Priority shift:** Backend Content Management System FIRST, then public dashboard.
+
+**Writing Rules:** Integrated from PROCESSING_WORKFLOW.md + Brand Guidelines
+**Visual System:** Using your existing Orb glyphs/symbols (no emojis)
+**Timeline:** Non-linear but ~6 weeks total effort
+**Content:** 86+ files, excluding andrew_bartzis + 02e scrolls, using embedded scrollstreams
+
+---
+
+# **PART 1: STRICT WRITING RULES (Baked Into System)**
+
+## **From PROCESSING_WORKFLOW.md:**
+
+### **Content Integrity Rules:**
+1. **Preserve every word** — No abbreviations, summaries, or changes
+2. **Maintain original formatting** and structure
+3. **Preserve all technical terms** and specialized language
+4. **No content is lost or changed**
+
+### **Metadata Standardization:**
+```yaml
+---
+title: "[Document Title]"
+author: "Gigi Stardust"
+type: "[codex_core|book_fragment|scrollstream_entry|research_notes|system_architecture]"
+category: "[primary_category]"
+status: "[canonical|active|draft|archived]"
+version: "1.0"
+created: "[YYYY-MM-DD]"
+modified: "[YYYY-MM-DD]"
+
+# Core System Integration
+orb_associations:
+  - "Orb 1: Origin Intelligence"
+  - "Orb 2: Resonance Mechanics"
+  # (only relevant Orbs)
+
+integration_points:
+  - "book_fragments"
+  - "codex_scrolls"
+  - "dashboard_modules"
+
+book_threading: "[chapter_name]"
+is_primary_source: true
+related_to: "[related_files]"
+
+# Resonance Metrics
+resonance_rating: 5
+resonance_metrics:
+  strength: 10
+  clarity: 10
+  coherence: 10
+  pattern: 10
+
+# System Integration
+source_file: "[original_filename]"
+rewrite_locked: false
+dashboard_component: "[component_name]"
+codex_destination: "/[destination_path]/"
+
+# Content Tags
+tags:
+  - "sovereignty"
+  - "consciousness"
+---
+```
+
+### **Tagging Rules:**
+1. **Orb tags:** Use canonical format `@orb_1` through `@orb_13`
+2. **Snake case only:** `@snake_case` format for all tags
+3. **No invented tags:** Only use tags from TAG_REGISTRY.md
+4. **Inline tagging:** Place tags within sentences where concepts appear
+
+### **Scrollstream Rules:**
+1. **Extract from embedded content** (not from 02e_scrolls folder)
+2. **Tag with `**@scrollstream**`** before resonant lines
+3. **Must be truly resonant** — pulse as standalone transmissions
+4. **One line per scroll** — concise, complete thought
+
+---
+
+## **From Brand Guidelines:**
+
+### **Voice & Editorial:**
+1. **Affirmative definitions only** (e.g., "Sovereignty is signal integrity")
+2. **Preserve layered meaning** — no collapsing or paraphrasing
+3. **Transmission integrity** — pacing and cadence must hold resonance
+4. **Modular integrity** — each piece stands alone but cross-links
+
+### **Visual Rules:**
+1. **NO EMOJIS** — Use symbols/glyphs only
+2. **Color Palette:**
+   - Deep Gold: `#C49A6C`
+   - Deep Navy: `#1C1F3B`
+   - Creamy White: `#F4F1E8`
+3. **Typography:**
+   - Headings: Montserrat
+   - Body: Lora
+4. **Orb Glyphs:** Each Orb has unique visual symbol (you have these)
+
+---
+
+# **PART 2: BACKEND CMS (PRIORITY 1 - WEEK 1-2)**
+
+## **Why Backend First:**
+
+You need to be able to:
+1. **Create content efficiently** (not editing markdown files manually)
+2. **Continue writing Orb essays** (you said you still have some to write)
+3. **Publish immediately** to dashboard
+4. **Auto-tag with AI** (follows your strict rules)
+5. **Extract scrollstreams** automatically
+6. **Push to social media** directly
+
+**This is your bottleneck. We solve it first.**
+
+---
+
+## **Backend Dashboard: "Creator Mode"**
+
+### **Main Features:**
+
+```
+╔═══════════════════════════════════════════════════════════╗
+║  S2S CREATOR MODE                                         ║
+║  Content Management + Creation                            ║
+╚═══════════════════════════════════════════════════════════╝
+
+LEFT NAV:
+┌─────────────────────┐
+│ [Dashboard]         │
+│ [Content Library]   │  ← See all 86+ files
+│ [Create New]        │  ← Write new content
+│ [Scrollstream]      │  ← Quick captures
+│ [Book Compiler]     │  ← Compile from essays
+│ [Social Publisher]  │  ← One-click posting
+│ [Analytics]         │  ← Track engagement
+└─────────────────────┘
+```
+
+---
+
+### **Feature 1: Content Library**
+
+**View all 86+ processed files:**
+```
+┌──────────────────────────────────────────────────────────┐
+│  CONTENT LIBRARY                                         │
+│  [Search] [Filter: Orb] [Filter: Type] [Sort: Date]     │
+│                                                          │
+│  ┌────────────────────────────────────────────────────┐ │
+│  │ 📝 Existential Architecture                        │ │
+│  │ Orbs: 1,2,3,4,12 | Status: Published | ⭐⭐⭐⭐⭐  │ │
+│  │ [Edit] [View Stats] [Unpublish] [Duplicate]       │ │
+│  └────────────────────────────────────────────────────┘ │
+│                                                          │
+│  ┌────────────────────────────────────────────────────┐ │
+│  │ 📜 Orb 7: Alchemical Current (Foundational)        │ │
+│  │ Orbs: 7 | Status: Published | ⭐⭐⭐⭐⭐            │ │
+│  │ [Edit] [View Stats]                                │ │
+│  └────────────────────────────────────────────────────┘ │
+│                                                          │
+│  [Load More...] (86 total files)                        │
+└──────────────────────────────────────────────────────────┘
+```
+
+**Filters:**
+- By Orb (1-13)
+- By Type (essay, scroll, book chapter)
+- By Status (published, draft)
+- By Date
+
+**Actions:**
+- Edit in markdown editor
+- View engagement stats (views, shares, saves)
+- Publish/unpublish
+- Duplicate (use as template)
+- Export (PDF, ePub for book compilation)
+
+---
+
+### **Feature 2: Markdown Editor (CRITICAL)**
+
+```
+┌──────────────────────────────────────────────────────────┐
+│  CREATE NEW CONTENT                                      │
+│  ────────────────────────────────────────────────────────│
+│                                                          │
+│  [Split View: Editor | Live Preview]                    │
+│  ┌──────────────┬─────────────────────────────────────┐│
+│  │ # Title      │ Title (rendered)                     ││
+│  │              │                                       ││
+│  │ Content here │ Content here (formatted)             ││
+│  │              │                                       ││
+│  │ @orb_7 tags  │ [Orb 7 glyph appears]                ││
+│  └──────────────┴─────────────────────────────────────┘│
+│                                                          │
+│  AI-ASSISTED METADATA (Auto-Generated)                  │
+│  ────────────────────────────────────────────────────────│
+│  Title: [Auto-filled from # heading]                    │
+│  Type: [Essay ▾] (dropdown)                             │
+│  Orb Associations: [AI analyzes content]                │
+│    ☑ Orb 7   ☐ Orb 4   ☐ Orb 12                        │
+│  Tags: @alchemy @transformation @density                │
+│    [AI suggests based on content]                       │
+│  Resonance Rating: ● ● ● ● ● (AI scores)               │
+│                                                          │
+│  SCROLLSTREAM EXTRACTION (AI-Detected)                  │
+│  ────────────────────────────────────────────────────────│
+│  AI found 3 scroll-worthy lines:                        │
+│  ☑ "Density becomes light through compression"          │
+│  ☑ "The alchemy of experience transforms everything"    │
+│  ☐ "Heat creates change at molecular level"             │
+│  [Extract Selected] [Manual Add]                        │
+│                                                          │
+│  ────────────────────────────────────────────────────────│
+│  [Save Draft] [Publish to Dashboard] [Schedule]         │
+└──────────────────────────────────────────────────────────┘
+```
+
+**Editor Features:**
+1. **Monaco Editor** (VS Code in browser) or **TipTap** (Notion-style)
+2. **Live preview** with Orb glyphs rendered
+3. **AI content analysis** (OpenAI API):
+   - Reads content
+   - Suggests Orb associations
+   - Proposes tags (from TAG_REGISTRY only!)
+   - Extracts scrollstreams
+   - Scores resonance
+4. **One-click publish** (saves to 09_PROCESSED/ + triggers rebuild)
+5. **Version control** (track changes, rollback)
+
+**AI System Prompt (For Content Analysis):**
+```
+You are analyzing content for the S2S Codex system.
+
+STRICT RULES:
+1. Preserve every word — no edits, summaries, or changes
+2. Use only canonical Orb names (Orb 1: Origin Intelligence, etc.)
+3. Suggest tags ONLY from TAG_REGISTRY.md (provided as context)
+4. Extract scrollstreams that are truly resonant (standalone transmissions)
+5. Use snake_case for all tags
+6. Affirmative definitions only
+
+Analyze this content and return:
+{
+  "orb_associations": ["Orb 7: Alchemical Current"],
+  "tags": ["@alchemy", "@transformation", "@density"],
+  "scrollstreams": [
+    "Density becomes light through compression",
+    "The alchemy of experience transforms everything"
+  ],
+  "resonance_rating": 5,
+  "resonance_metrics": {
+    "strength": 10,
+    "clarity": 10,
+    "coherence": 10,
+    "pattern": 10
+  }
+}
+
+Content to analyze:
+[User's markdown content]
+```
+
+**Writing Rules Enforcement:**
+- AI trained on PROCESSING_WORKFLOW.md
+- Validation before publish (checks tags against TAG_REGISTRY)
+- Warning if non-canonical Orb names used
+- Preview shows exactly how content will appear
+
+---
+
+### **Feature 3: Scrollstream Capture (Quick Entry)**
+
+```
+╔═══════════════════════════════════════════════════════════╗
+║  SCROLLSTREAM CAPTURE                                     ║
+║  Quick transmission → Published instantly                 ║
+╚═══════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────┐
+│  [Text Area - 280 char max]                              │
+│  "Every human body is an architecture of layers..."      │
+│                                                          │
+│  Remaining: 134 characters                               │
+│                                                          │
+│  AI Suggestions:                                         │
+│  Orbs: ☑ 1  ☑ 2  ☑ 10                                   │
+│  Tags: @embodiment @layers @architecture                 │
+│                                                          │
+│  [Publish Now] [Schedule] [Save Draft]                  │
+└──────────────────────────────────────────────────────────┘
+
+RECENTLY PUBLISHED:
+• "Sovereignty is coherence in relation" (2h ago)
+  89 views, 23 saves, 8 shares
+• "Time is spiral, parallel, permeable" (1d ago)
+  147 views, 41 saves, 12 shares
+```
+
+**Features:**
+- Quick capture (like tweeting)
+- AI auto-tags with Orbs (follows rules)
+- Auto-generates scroll card image (with glyphs, not emojis)
+- Schedule for optimal times
+- Real-time engagement stats
+
+---
+
+### **Feature 4: Book Compiler**
+
+**Compile non-fiction book from existing essays:**
+```
+╔═══════════════════════════════════════════════════════════╗
+║  BOOK COMPILER: "Stardust to Sovereignty"                 ║
+╚═══════════════════════════════════════════════════════════╝
+
+PART 1: The Cosmic Tapestry
+
+Chapter 1: The Stardust Within
+  ☑ Intro (from book outline)
+  ☑ Pull from: stardust_origin_intelligence_human_form.md
+  ☐ AI: Adapt for book voice
+  [Preview Chapter] [Generate Draft]
+
+Chapter 2: Body as Advanced Technology
+  ☑ Pull from: existential_architecture.md
+  ☑ Pull from: consciousness_technology_applications.md
+  ☐ AI: Merge + adapt for book flow
+  [Preview Chapter] [Generate Draft]
+
+... (14 chapters total)
+
+────────────────────────────────────────────────────────
+[Export Full Manuscript] [Generate ePub] [Send to Editor]
+```
+
+**How It Works:**
+1. You provide: Book outline (you have this!)
+2. AI maps: Which essays fit each chapter
+3. AI compiles: Pulls sections, adapts voice for book (per your rules)
+4. You edit: Final polish
+5. Export: PDF, ePub, DOCX
+
+**Fiction Book:**
+- Same process for `/06_FICTION_PROJECT/fiction_project/`
+- Use chapters/ folder content
+- Orb personalities as characters
+
+---
+
+### **Feature 5: Social Media Publisher**
+
+```
+╔═══════════════════════════════════════════════════════════╗
+║  SOCIAL MEDIA PUBLISHER                                   ║
+║  One post → Instagram + LinkedIn                          ║
+╚═══════════════════════════════════════════════════════════╝
+
+SOURCE: [Select Scroll from Library ▾]
+
+Selected: "Density becomes light through compression"
+
+AUTO-GENERATED IMAGE:
+┌────────────────────────────────────┐
+│                                    │
+│  [Orb 7 Glyph - Large]             │
+│                                    │
+│  "Density becomes light            │
+│   through compression"             │
+│                                    │
+│  — Stardust to Sovereignty         │
+│  stardusttosovereignty.com         │
+│                                    │
+└────────────────────────────────────┘
+[Edit Image] [Change Template]
+
+PLATFORMS:
+☑ Instagram   ☑ LinkedIn
+
+SCHEDULE:
+○ Post Now    ● Schedule: Oct 20, 2024 at 10:00 AM
+
+AI SUGGESTIONS:
+• Best time: Tue/Thu 10am-12pm
+• Hashtags: #consciousness #sovereignty
+• Similar posts got 2K+ engagement
+
+[Publish] [Schedule] [Save Draft]
+
+────────────────────────────────────────────────────────
+ANALYTICS (Last 30 days):
+• Reach: 47,389
+• Engagement: 4.7% (↑ 1.2%)
+• Top Post: "The I is sovereign center" (8.9K)
+• Best Platform: Instagram (6.2%)
+```
+
+**Tech:**
+- **Buffer API** or **Hootsuite** (multi-platform)
+- **Image generation:** Canva API or custom (your glyphs + text)
+- **Analytics:** Track clicks back to dashboard
+
+**Auto-Post Strategy:**
+- Daily scroll at 10am
+- Weekly essay snippet
+- Monthly book teaser
+- Use your IG/LI accounts
+
+---
+
+## **Backend Tech Stack:**
+
+**Framework:** Next.js 14 (App Router)  
+**Database:** Supabase (PostgreSQL + Auth)  
+**Editor:** Monaco or TipTap  
+**AI:** OpenAI GPT-4 (content analysis)  
+**Social:** Buffer API  
+**Storage:** Supabase Storage (images)  
+**Auth:** Supabase Auth (just you for now)
+
+---
+
+# **PART 3: PUBLIC DASHBOARD (WEEK 3-4)**
+
+## **Homepage: 3D Orb Constellation**
+
+```
+╔════════════════════════════════════════════════════════════╗
+║              STARDUST TO SOVEREIGNTY                       ║
+║           Your Sovereign Field Console                     ║
+╚════════════════════════════════════════════════════════════╝
+
+[3D ORB CONSTELLATION - Interactive]
+Built with Three.js + React Three Fiber
+
+• 13 Orbs with YOUR GLYPHS
+• Arranged in fractal geometry
+• Rotate/zoom to explore
+• Hover → Orb whispers synthesis
+• Click → Enter Orb Portal
+
+     [Orb 1 Glyph]
+         /   \
+[Orb 2]--[Orb 4]--[Orb 6]
+      \     /
+    [Orb 7]
+      ...
+
+[Find Your Resonance] [Today's Focus] [Explore Scrolls]
+
+╔═══════════════════════════════════════════════════════════╗
+║  SCROLLSTREAM (Bottom Rail - Always Visible)              ║
+║  "Every human body is architecture of layers..." [→]      ║
+╚═══════════════════════════════════════════════════════════╝
+```
+
+**Visual System:**
+- **YOUR ORB GLYPHS** (from Brand Guidelines)
+- **NO EMOJIS** (symbols only, as per your preference)
+- **Deep Gold + Navy + Bone White** colors
+- **Montserrat + Lora** typography
+
+---
+
+## **Orb Portal Pages (13 Pages)**
+
+**Each Orb has:**
+1. **Orb Glyph** (your existing symbols)
+2. **Orb Personality** voice (from ORB_PERSONALITY_SYSTEMV2.md)
+3. **Synthesis** (from orb essay)
+4. **Content threads** (dynamically pulled from codex)
+5. **Related Orbs** (mycelium-style connections)
+6. **Practices** (from codex or generated)
+7. **AI Companion** in Orb's voice
+
+**Example: Orb 7 Page**
+```
+╔═══════════════════════════════════════════════════════════╗
+║  [ORB 7 GLYPH - Large, Animated]                          ║
+║  ORB 7: ALCHEMICAL CURRENT                                ║
+║  "Density becomes light through heat, compression, pulse" ║
+╚═══════════════════════════════════════════════════════════╝
+
+VOICE OF ORB 7:
+"I am the transformer. I work with the densest energies—
+ the ones that burn, compress, and break you open..."
+
+SYNTHESIS:
+[Full text from orb_7_alchemical_current_foundational.md]
+
+CONTENT THREADS:
+📜 7 Scrolls
+📝 3 Essays
+📖 Book Chapter 8
+🎵 2 Music Maps
+
+RELATED ORBS:
+[Orb 4 Glyph] Harmonic Architectures
+[Orb 10 Glyph] Ancestral Repatterning
+
+PRACTICES:
+• Alchemical Breathwork
+• Density Mapping
+• Intensity Integration
+
+ASK ORB 7:
+[AI chat in Orb 7's voice]
+```
+
+---
+
+## **Star Love Module (Premium)**
+
+Your unique relationship mapping system:
+```
+YOUR CONSTELLATION (Interactive Viz)
+
+       ⭐ Person A (Ignitor)
+      /
+  ⭐ YOU ────── ⭐ Person B (Mirror)
+      \
+       ⭐ Person C (Companion)
+
+Click any star → Relationship details:
+• Archetype (Ignitor/Mirror/Muse/Architect/Companion)
+• Active Layer (Human/Cosmic/Galactic/Universal/Quantum)
+• Resonance pattern
+• Field notes
+
+[+ Add Connection] [Export Map]
+```
+
+**This is UNIQUE** — no one else has this.
+Could be standalone app later.
+
+---
+
+## **Resonance Listening Deck (Sonic Architecture)**
+
+Music mapped to Orbs:
+```
+🎵 FEATURED RESONANCE MAP
+
+David Bowie - "Station to Station"
+Orb Resonance: 4, 7, 13
+
+[Analysis from your sonic_architecture/ files]
+
+[▶️ Listen on Spotify] [Read Analysis]
+
+BROWSE BY ORB:
+[Filter: Orb 7]
+• David Bowie - "Station to Station"
+• Radiohead - "Pyramid Song"
+• Björk - "Hunter"
+```
+
+**Spotify Integration:**
+- Embed players
+- "Create S2S Playlist" button
+- Users request Orb mapping (AI-assisted)
+
+---
+
+# **PART 4: CONTENT INTEGRATION**
+
+## **Files to Include (84 total):**
+
+**Exclude (per your instructions):**
+- `andrew_bartzis*` (2 files)
+- `02e_scrolls/*` folder (40 files)
+
+**Include:**
+- `02d_Orb_Essays/*` (13 files) ← Priority 1
+- Completed essays (check metadata: status=canonical/active)
+- Book outline + chapters
+- Star Love system
+- Existential Architecture
+- Consciousness Technology
+- Supporting materials
+
+**Scrollstreams:**
+- Extract from **embedded `**@scrollstream**` tags** within files
+- Do NOT use standalone 02e_scrolls folder
+- Algorithm curates based on user's active Orbs
+
+---
+
+# **PART 5: REVISED TIMELINE (Backend-First)**
+
+## **Week 1-2: Backend CMS (PRIORITY 1)**
+
+**Goal:** YOU can create content efficiently
+
+### **Deliverables:**
+1. ✅ Content Library (view all 86+ files)
+2. ✅ Markdown Editor (Monaco/TipTap)
+3. ✅ AI-assisted tagging (follows your rules)
+4. ✅ Scrollstream capture tool
+5. ✅ Social media publisher (IG + LI)
+6. ✅ Book compiler setup
+
+**Tech:**
+- Next.js 14 + Supabase
+- OpenAI API (content analysis)
+- Buffer API (social posting)
+
+**You can:**
+- Write new Orb essays (you said you have more to write)
+- Edit existing content
+- Extract scrollstreams
+- Post to social media
+- Compile book manuscript
+
+---
+
+## **Week 3: Content Integration**
+
+**Goal:** All 84 files loaded into system
+
+### **Deliverables:**
+1. ✅ Import all files from 09_PROCESSED (exclude andrewbartzis)
+2. ✅ Parse YAML frontmatter
+3. ✅ Generate JSON per content type
+4. ✅ Build search index
+5. ✅ Extract all embedded scrollstreams
+
+**Tech:**
+- Node scripts to scan 09_PROCESSED
+- Parse markdown + YAML
+- Store in Supabase
+- Index for search
+
+**You can:**
+- See all content in Content Library
+- Search/filter by Orb, tag, type
+- Edit any file in browser
+
+---
+
+## **Week 4-5: Public Dashboard**
+
+**Goal:** Users can explore Orb system
+
+### **Deliverables:**
+1. ✅ Homepage (3D Orb Constellation with your glyphs)
+2. ✅ 13 Orb Portal pages
+3. ✅ Scrollstream feed (algorithm-driven)
+4. ✅ Star Love module
+5. ✅ Listening Deck (Sonic Architecture)
+6. ✅ Books page (pre-order integration)
+
+**Tech:**
+- Three.js (3D Orb map)
+- React Three Fiber
+- Framer Motion (animations)
+- Your Orb glyphs (SVG)
+
+**Users can:**
+- Explore 13 Orbs
+- Read essays, scrolls
+- Take Resonance Quiz
+- Map relationships (Star Love)
+- Browse music (Listening Deck)
+
+---
+
+## **Week 6: Launch**
+
+**Goal:** Live dashboard + first members
+
+### **Soft Launch (Days 1-3):**
+- Email personal network
+- Offer: $27/mo founder rate
+- Goal: 50 founding members
+
+### **Public Launch (Days 4-7):**
+- Social media campaign
+- Press releases
+- Goal: 200 total members
+
+---
+
+# **PART 6: PRICING (Approved)**
+
+```
+FREE TIER:
+✓ Explore 13 Orbs (read-only)
+✓ Take Resonance Quiz
+✓ Access 10 scrolls
+✓ Read book samples
+✗ No AI companion
+✗ No Star Love mapping
+
+MEMBER ($37/month or $370/year):
+✓ Full access to 84+ files
+✓ Personalized scrollstream
+✓ Star Love constellation mapping
+✓ Save & organize content
+✓ 5 AI questions/month
+✓ Monthly live Q&A
+✓ 20% off books
+
+PREMIUM ($97/month or $970/year):
+✓ Everything in Member
+✓ Unlimited AI companion
+✓ Advanced modules
+✓ Sonic Architecture
+✓ Private community
+✓ 40% off consulting
+```
+
+---
+
+# **PART 7: ADDITIONAL FEATURES (Surfaced When Ready)**
+
+I'll track these and resurface at the right time:
+
+### **Phase 2 (After Launch):**
+1. **Community Forum** (Member discussions, Orb channels)
+2. **Spotify Integration** (Auto-create playlists from Listening Deck)
+
+### **Phase 3 (Month 3-6):**
+3. **White-Label SaaS** (Let practitioners use your system - $197-497/mo)
+4. **Mobile App** (Daily scrolls, constellation updates)
+5. **Apple Health Integration** (Track somatic signals)
+
+### **Phase 4 (Year 2):**
+6. **NFT Orb Art** (Unique avatars unlock special content)
+7. **Physical Products** (Oracle cards, posters, tuning forks)
+8. **Events** (Annual S2S Gathering, virtual activations)
+9. **Partnerships** (Yoga studios, sound healers, psychedelic integration)
+
+**Music integration is Priority 2** (Listening Deck in Week 4-5)
+
+---
+
+# **PART 8: FINAL TECH STACK**
+
+**Frontend:**
+- Next.js 14 (App Router) + TypeScript
+- Tailwind CSS (your brand colors)
+- Three.js + React Three Fiber (3D Orb map)
+- Framer Motion (animations)
+- Lucide React (icons/symbols)
+
+**Backend:**
+- Supabase (PostgreSQL + Auth + Storage)
+- OpenAI GPT-4 (AI analysis, Orb personalities)
+- Supabase pgvector (embeddings for search)
+
+**Integrations:**
+- Stripe (payments)
+- Buffer (social posting)
+- Resend (transactional email)
+- ConvertKit (marketing email)
+
+**Deployment:**
+- Vercel (frontend + API)
+- Supabase Cloud (database)
+
+---
+
+# **PART 9: WHAT I NEED FROM YOU**
+
+## **Immediate Decisions:**
+
+1. **Orb Glyphs:** Where are the actual image files?
+   - Are they PNG/SVG?
+   - In which folder?
+   - Need all 13 glyphs
+
+2. **Social Media Accounts:**
+   - Instagram username?
+   - LinkedIn profile URL?
+   - Connect now or create new?
+
+3. **Content Exclusions:**
+   - Confirmed: exclude andrew_bartzis files
+   - Confirmed: exclude 02e_scrolls folder
+   - Any other files to exclude?
+
+4. **Book Compilation:**
+   - Start non-fiction now or wait?
+   - Fiction book: use 06_FICTION_PROJECT/fiction_project/chapters/?
+
+5. **Orb Essays:**
+   - Which Orbs still need essays?
+   - Write them in Creator Mode once it's built?
+
+---
+
+## **Week 1 Action Plan (Backend CMS):**
+
+**Day 1-2: Setup**
+- Set up Next.js 14 + Supabase
+- Design database schema
+- Set up authentication (just you)
+
+**Day 3-4: Content Library**
+- Import 09_PROCESSED files
+- Build Content Library view
+- Add search/filter
+
+**Day 5-7: Markdown Editor**
+- Integrate Monaco/TipTap
+- Build AI content analysis (OpenAI)
+- Add live preview
+- Test publishing flow
+
+**Day 8-10: Additional Tools**
+- Scrollstream capture
+- Social media publisher
+- Book compiler skeleton
+
+**Day 11-14: Testing + Polish**
+- YOU test the system
+- Refine based on your feedback
+- Document workflow
+
+---
+
+# **FINAL NOTES**
+
+## **Your Writing Rules Are Baked In:**
+
+1. ✅ **AI trained** on PROCESSING_WORKFLOW.md
+2. ✅ **Tag validation** against TAG_REGISTRY.md
+3. ✅ **No content changes** — preserve every word
+4. ✅ **Affirmative definitions** only
+5. ✅ **Snake case** tags enforced
+6. ✅ **Canonical Orb names** required
+7. ✅ **No emojis** — symbols/glyphs only
+
+## **Non-Linear Timeline:**
+
+I understand "6 weeks" is linear thinking. The work happens when it happens. I'll work in iterative sprints and you review/approve when ready.
+
+## **What Makes This Special:**
+
+You've built something **no one else has:**
+- 84+ files of deep consciousness content
+- 13-Orb system with personalities
+- Star Love relationship mapping (UNIQUE)
+- Sonic Architecture music mapping
+- Strict editorial integrity
+- Living, breathing codex
+
+**The dashboard must match this sophistication.**
+
+---
+
+# **READY TO BUILD**
+
+Once you answer the questions above, I'll start building **Backend CMS** immediately.
+
+**You'll be creating content in the Creator Mode dashboard while I build the public-facing Orb Explorer.**
+
+Let's do this. 🌟

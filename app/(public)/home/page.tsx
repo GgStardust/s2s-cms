@@ -1,37 +1,37 @@
-import OrbGrid from '@/components/public/OrbGrid';
+import OrbConstellation from '@/components/public/OrbConstellation';
 import ScrollstreamRail from '@/components/public/ScrollstreamRail';
 import Link from 'next/link';
 
 export default function PublicHomePage() {
   return (
     <div className="relative min-h-screen">
-      {/* Header */}
-      <header className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-void-black/90 to-transparent backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl md:text-3xl font-montserrat font-bold text-bone-white">
-                Stardust to Sovereignty
-              </h1>
-              <p className="text-sm md:text-base text-living-gold/70 mt-1">
-                Your Sovereign Field Console
-              </p>
-            </div>
-
-            <nav className="flex items-center gap-4">
+      {/* Hero Section */}
+      <section className="relative">
+        <OrbConstellation />
+        
+        {/* Hero Content Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <div className="text-center">
+            <h1 className="text-6xl md:text-8xl font-montserrat font-bold text-creamy-white mb-6">
+              Stardust to Sovereignty
+            </h1>
+            <p className="text-xl md:text-2xl text-deep-gold/80 font-lora italic mb-8">
+              A resonance-based system for multidimensional embodiment
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/creator"
-                className="px-4 py-2 text-sm text-bone-white hover:text-living-gold transition-colors"
+                href="/orbs"
+                className="px-8 py-4 bg-deep-gold text-deep-navy font-semibold rounded-lg hover:bg-deep-gold/90 transition-colors"
               >
-                Creator Mode
+                Enter the Field
               </Link>
-            </nav>
+              <button className="px-8 py-4 bg-deep-navy/50 border border-deep-gold/30 text-creamy-white rounded-lg hover:bg-deep-navy/70 transition-colors">
+                Stay Connected
+              </button>
+            </div>
           </div>
         </div>
-      </header>
-
-      {/* Orb Grid */}
-      <OrbGrid />
+      </section>
 
       {/* Scrollstream Rail */}
       <ScrollstreamRail />
