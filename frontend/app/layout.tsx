@@ -6,11 +6,17 @@ import PublicNav from '@/components/navigation/PublicNav'
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
+  display: 'swap',
+  fallback: ['system-ui', 'arial'],
+  preload: true,
 })
 
 const lora = Lora({
   subsets: ['latin'],
   variable: '--font-lora',
+  display: 'swap',
+  fallback: ['Georgia', 'serif'],
+  preload: true,
 })
 
 export const metadata: Metadata = {
